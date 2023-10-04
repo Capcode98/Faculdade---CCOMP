@@ -8,3 +8,4 @@
 *.mp4
 *.txt
 **\private
+*private*
