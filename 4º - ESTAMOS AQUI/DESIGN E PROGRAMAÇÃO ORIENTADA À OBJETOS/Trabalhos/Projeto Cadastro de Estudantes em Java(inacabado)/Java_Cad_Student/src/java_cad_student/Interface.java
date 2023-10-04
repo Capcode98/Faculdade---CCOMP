@@ -1,16 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
 
 package java_cad_student;
 import java.util.ArrayList;
 import java.util.Scanner;
-
-/**
- *
- * @author fodao
- */
 
 public class Interface {
 
@@ -36,7 +27,8 @@ public class Interface {
             case 3 -> getStudentByName();
             case 4 -> getStudentById();
             case 5 -> showStudents();
-            case 0 -> System.out.println("Até mais...");
+            case 0 -> bye();
+            
             default -> System.out.println("Opção não foi encontrada! \n");
         }        } while (option != 0);
     }
@@ -47,12 +39,17 @@ public class Interface {
                            1- Adicionar o estudante
                            2- Remover o estudante
                            3- Pesquisar estudante por nome
-                           4- Pesquisar estudante por matr\u00edcula
+                           4- Pesquisar estudante por matricula
                            5- Listar todos estudantes cadastrados
                            0- Sair
                            Opcao:""");
 
         return scanner.nextInt();
+    }
+
+    private void bye(){
+        System.out.println("Até mais...");
+        scanner.close();
     }
 
     private void addStudent(){
@@ -63,48 +60,67 @@ public class Interface {
         String adress;
 
         System.out.println("Forneça os dados para efetuar o cadastro:");
-        System.out.println("Matrícula: ");
-        id = scanner.next();
-        System.out.println("Nome: ");
-        name = scanner.next();
+        scanner.nextLine();
+
+        do {
+            System.out.println("Matrícula: ");
+            id = scanner.nextLine(); 
+            
+        } while (id.length() != 8);
+        
+        do {
+            System.out.println("Nome: ");
+            name = scanner.nextLine();
+    
+        } while (name.length() < 2 || name.length() > 40);
+        
+
         System.out.println("Email: ");
-        e_mail = scanner.next();
+        e_mail = scanner.nextLine();
+        
+
         System.out.println("Telefone: ");
-        phone_number = scanner.next();
+        phone_number = scanner.nextLine();
+        
+        
         System.out.println("Endereço: ");
-        adress = scanner.next();
+        adress = scanner.nextLine();
+        
 
         Student student = new Student(id, name, e_mail, phone_number, adress);
         controlerStudent.addStudent(student);
     }
 
     private void removeStudent(){
+        scanner.nextLine();
         System.out.println("Para remover o estudande insira a Matrícula do mesmo: ");
         System.out.println("Matrícula: ");
 
-        controlerStudent.removeStudent(scanner.next());
+        controlerStudent.removeStudent(scanner.nextLine());
     }
 
     private void getStudentByName(){
+        scanner.nextLine();
         System.out.println("Informe o nome do estudante: ");
         System.out.println("Nome: ");
-        Student student = controlerStudent.findStudentByName(scanner.next());
+        Student student = controlerStudent.findStudentByName(scanner.nextLine());
 
         if (student != null){
             System.out.println("Nome: " + student.getName() +
                 "\nMatrícula: " + student.getId() +
                 "\nEmail: " + student.getE_mail() +
                 "\nTelefone: " + student.getPhone() +
-                "\nEndereço: " + student.getAdress());;
+                "\nEndereço: " + student.getAdress());
         }else{
             System.out.println("Estudante não está cadastrado!");
         }
     }
 
     private void getStudentById(){
+        scanner.nextLine();
         System.out.println("Informe a matrícula do estudante: ");
         System.out.println("Matrícula: ");
-        Student student = controlerStudent.findStudentById(scanner.next());
+        Student student = controlerStudent.findStudentById(scanner.nextLine());
 
         if (student != null){
             System.out.println("Nome: " + student.getName() +

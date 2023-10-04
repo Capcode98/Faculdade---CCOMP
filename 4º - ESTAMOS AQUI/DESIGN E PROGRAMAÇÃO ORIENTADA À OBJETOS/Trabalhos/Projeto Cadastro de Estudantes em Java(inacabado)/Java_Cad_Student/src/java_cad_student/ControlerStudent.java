@@ -1,15 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
 package java_cad_student;
 import java.util.ArrayList;
-
-/**
- *
- * @author fodao
- */
 
 public class ControlerStudent {
     
@@ -36,6 +27,7 @@ public class ControlerStudent {
 
             if (studentInSearch.getName().equals(name)) {
                 System.out.println("Aluno encontrado.. \n");
+                
                 return studentInSearch;
             }
         }
@@ -50,6 +42,7 @@ public class ControlerStudent {
 
             if (studentInSearch.getId().equals(id)) {
                 System.out.println("Aluno encontrado.. \n");
+
                 return studentInSearch;
             }
         }
